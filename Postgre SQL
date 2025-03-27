@@ -1,0 +1,129 @@
+Postgre SQL
+
+COUNT(DISTINCT) AS() DISTINCT
+
+-- Count the number of records in the people table
+SELECT COUNT(*) AS count_records
+FROM people;
+
+-- Count the number of records in the people table
+SELECT COUNT(film_id) AS count_film_id
+FROM reviews;
+
+-- Count the records for languages and countries represented in the films table
+SELECT COUNT(language) AS count_languages, COUNT(country) AS count_countries
+FROM films
+
+-- Count the number of birthdates in the people table
+SELECT COUNT(birthdate) AS count_birthdate
+FROM people;
+
+-- Return the unique countries from the films table
+SELECT DISTINCT country
+FROM films
+
+--FILTERS
+--WHERE < > <= >= = <>
+
+-- Select film_id and imdb_score with an imdb_score over 7.0
+SELECT 
+    film_id,
+    imdb_score
+FROM reviews
+WHERE imdb_score > 7.0
+
+-- Select film_id and facebook_likes for ten records with less than 1000 likes 
+SELECT 
+    film_id,
+    facebook_likes
+FROM reviews
+WHERE facebook_likes < 1000
+LIMIT 10
+
+-- Count the records with at least 100,000 votes
+SELECT 
+    COUNT(num_votes) AS films_over_100k_votes
+FROM reviews
+WHERE num_votes >= 100000
+
+
+-- Count the Spanish-language films
+SELECT 
+    COUNT(language) AS count_spanish
+FROM films
+WHERE language = 'Spanish';
+
+
+-- Multiple Criteria (OR, AND & BETWEEN)
+
+-- Select the title and release_year for all German-language films released before 2000
+SELECT 
+    title, 
+    release_year
+FROM films
+WHERE release_year < 2000 
+AND language = 'German';
+
+-- Select all records for German-language films released after 2000 and before 2010
+SELECT *
+FROM films
+WHERE release_year > 2000
+AND release_year < 2010
+AND language = 'German';
+
+-- Find the title and year of films from the year 1990 or 1999 for English or Spanish-language films that gross over $2000000
+
+SELECT 
+    title, 
+    release_year
+FROM films
+WHERE (release_year = 1990 OR release_year = 1999);
+AND (language = 'English' OR language = 'Spanish');
+
+
+-- Select the title and release_year for Spanish or French Language films released between 1990 and 2000 with a budget over $100 million
+
+SELECT title, release_year
+FROM films
+WHERE release_year BETWEEN 1990 AND 2000
+AND budget > 100000000
+AND (language = 'French' OR language = 'Spanish');
+
+
+-- Select the names that start with B
+SELECT name 
+FROM people
+WHERE name LIKE 'B%'
+
+
+-- Select the names that have r as the second letter
+SELECT name
+FROM people
+WHERE name like '_r_%'
+
+
+-- Select names that don't start with A
+SELECT name
+FROM people
+WHERE name NOT LIKE 'A%';
+
+
+-- Find the title and release_year for all films over two hours in length released in 1990 and 2000
+SELECT title, release_year
+FROM films
+WHERE release_year IN (1990, 2000)
+AND duration > 120
+
+-- Find the title and language of all films in English, Spanish, and French
+SELECT title, language
+FROM films
+WHERE language IN ('English', 'Spanish', 'French')
+
+
+-- Find the title, certification, and language all films certified NC-17 or R that are in English, Italian, or Greek
+SELECT title, certification, language
+FROM films
+WHERE language IN ('English', 'Italian', 'Greek')
+AND certification IN ('NC-17', 'R');
+
+
