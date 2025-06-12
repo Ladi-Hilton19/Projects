@@ -1,4 +1,4 @@
-Postgre SQL
+-- Postgre SQL
 
 COUNT(DISTINCT) AS() DISTINCT
 
@@ -127,3 +127,532 @@ WHERE language IN ('English', 'Italian', 'Greek')
 AND certification IN ('NC-17', 'R');
 
 
+-- 28/03/2025
+
+-- Count the unique titles
+SELECT COUNT(DISTINCT title) AS nineties_english_films_for_teens
+FROM films
+-- Filter to release_years to between 1990 and 1999
+WHERE release_year BETWEEN 1990 AND 1999
+-- Filter to English-language films
+AND language = 'English'
+-- Narrow it down to G, PG, and PG-13 certifications
+AND certification IN ('G', 'PG', 'PG-13');
+
+-- List all film titles with missing budgets
+SELECT title AS no_budget_info
+FROM films
+WHERE budget is NULL
+
+
+-- Summarizing Data(MIN MAX SUM AVG ROUND)
+
+-- Query the sum of film durations
+SELECT SUM(duration) AS total_duration
+FROM films
+
+-- Calculate the average duration of all films
+SELECT AVG(duration) AS average_duration
+FROM films
+
+-- Find the latest release_year
+SELECT MAX(release_year) AS latest_year
+FROM films
+
+-- Calculate the sum of gross from the year 2000 or later
+SELECT SUM(gross) AS total_gross
+FROM films
+WHERE (release_year >= 2000)
+
+-- Calculate the average gross of films that start with A
+SELECT AVG(gross) AS avg_gross_A
+FROM films
+WHERE title LIKE 'A%'
+
+
+-- Calculate the lowest gross film in 1994
+SELECT MIN(gross) AS lowest_gross
+FROM films
+WHERE release_year = 1994
+
+
+-- Calculate the highest gross film released between 2000-2012
+SELECT MAX(gross) AS highest_gross
+FROM films
+WHERE (release_year BETWEEN 2000 AND 2012)
+
+
+-- Round the average number of facebook_likes to one decimal place
+SELECT ROUND(AVG(facebook_likes), 1) AS avg_facebook_likes
+FROM reviews
+
+
+-- Calculate the average budget rounded to the thousands
+SELECT ROUND(AVG(budget),-3) AS avg_budget_thousands
+FROM films
+
+-- Calculate the title and duration_hours from films
+SELECT title, duration/60.0 AS duration_hours
+FROM films;
+
+-- Calculate the percentage of people who are no longer alive
+SELECT  COUNT(deathdate) * 100.0 / COUNT(name) AS percentage_dead
+FROM people;
+
+-- Find the number of decades in the films table
+SELECT (MAX(release_year) - MIN(release_year)) / 10.0 AS number_of_decades
+FROM films;
+
+-- Round duration_hours to two decimal places
+SELECT title, ROUND((duration / 60.0), 2) AS duration_hours
+FROM films;
+
+-- Select name from people and sort alphabetically
+SELECT name
+FROM people
+ORDER BY name
+
+-- Select the title and duration from longest to shortest film
+SELECT title, duration
+FROM films
+ORDER BY duration DESC
+
+-- Select the release year, duration, and title sorted by release year and duration
+SELECT title, release_year, duration
+FROM films
+ORDER BY release_year, duration
+
+-- Select the certification, release year, and title sorted by certification and release year
+SELECT title, release_year, certification
+FROM films
+ORDER BY certification, release_year DESC
+
+
+-- Find the release_year and film_count of each year
+SELECT release_year, COUNT(*) AS film_count
+FROM films
+GROUP BY release_year
+
+
+-- Find the release_year and average duration of films for each year
+SELECT release_year, AVG(duration) AS avg_duration
+FROM films
+GROUP BY release_year
+
+
+-- Find the release_year, country, and max_budget, then group and order by release_year and country
+SELECT release_year, country, MAX(budget) AS max_budget
+FROM films
+GROUP BY release_year, country
+ORDER BY release_year, country
+
+
+-- Years with the most language diversity
+SELECT release_year, COUNT(DISTINCT language) AS distinct_language
+FROM films
+GROUP BY release_year
+ORDER BY distinct_language DESC
+
+
+-- Select the country and distinct count of certification as certification_count
+SELECT country, COUNT(DISTINCT certification) AS certification_count
+FROM films
+-- Group by country
+GROUP BY country
+-- Filter results to countries with more than 10 different certifications
+HAVING COUNT(DISTINCT certification) > 10
+
+
+-- Select the country and average_budget from films
+SELECT country, ROUND(AVG(budget), 2) AS average_budget
+FROM films
+-- Group by country
+GROUP BY country
+-- Filter to countries with an average_budget of more than one billion
+HAVING ROUND(AVG(budget), 2) > 1000000000
+-- Order by descending order of the aggregated budget
+ORDER BY average_budget DESC
+
+
+-- Average Budget and Gross earning for movie with over 60mmillion in average budget released after 1990
+
+SELECT release_year, ROUND(AVG(budget),1) AS avg_budget, ROUND(AVG(gross),1) AS avg_gross
+FROM films
+WHERE release_year > 1990
+GROUP BY release_year
+HAVING AVG(budget) > 60000000
+ORDER BY avg_gross DESC
+LIMIT 1;
+
+
+QUESTION: Explore and analyze the students data to see how the length of stay (stay) impacts the average mental health diagnostic scores of the international students present in the study.
+
+Return a table with nine rows and five columns.
+The five columns should be aliased as: stay, count_int, average_phq, average_scs, and average_as, in that order.
+The average columns should contain the average of the todep (PHQ-9 test), tosc (SCS test), and toas (ASISS test) columns for each length of stay, rounded to two decimal places.
+The count_int column should be the number of international students for each length of stay.
+Sort the results by the length of stay in descending order.
+Note: Creating new cells in the workbook will rename the DataFrame. Make sure that your final solution uses the name df.
+
+
+-- Select required roles for report/analysis
+SELECT stay, COUNT(stay) AS count_int, ROUND(AVG(todep),2) AS average_phq, ROUND(AVG(tosc),2) AS average_scs, ROUND(AVG(toas),2) AS average_as
+FROM students
+WHERE inter_dom = 'Inter'
+GROUP BY stay
+ORDER BY stay DESC
+
+
+--JOINS IN SQL
+-- INNER JOIN
+
+-- Select name fields (with alias) and region 
+SELECT cities.name AS city, countries.name AS country, region
+FROM cities
+INNER JOIN countries
+ON cities.country_code = countries.code;
+
+
+-- Select fields with aliases
+SELECT c.code AS country_code, name, year, inflation_rate
+FROM countries AS c
+-- Join to economies (alias e)
+INNER JOIN economies AS e
+-- Match on code field using table aliases
+ON c.code = e.code
+
+
+SELECT c.name AS country, l.name AS language, official
+FROM countries AS c
+INNER JOIN languages AS l
+-- Match columns with USING
+USING(code)
+
+
+-- Select country and language name (aliased)
+SELECT c.name AS country, l.name AS language
+-- From countries (aliased)
+FROM countries AS c
+-- Join to languages (aliased)
+INNER JOIN languages AS l
+-- Use code as the joining field with the USING keyword
+USING(code)
+-- Filter for the Bhojpuri language
+WHERE l.name = 'Bhojpuri';
+
+-- JOINING MORE THAN TWO TABLES
+-- Select relevant fields
+SELECT name, fertility_rate
+-- Inner join countries and populations, aliased, on code
+FROM countries AS c
+INNER JOIN populations AS p
+ON c.code = p.country_code
+-- Join to economies (as e)
+INNER JOIN economies AS e
+-- Match on country code
+USING(code);
+--ON c.code = e.code
+-- Add an additional joining condition such that you are also joining on year
+AND p.year = e.year;
+
+
+--LEFT OUTER JOIN
+
+SELECT 
+	c1.name AS city, 
+    code, 
+    c2.name AS country,
+    region, 
+    city_proper_pop
+FROM cities AS c1
+-- Join right table (with alias)
+LEFT JOIN countries AS c2
+ON c1.country_code = c2.code
+ORDER BY code DESC;
+
+
+--RIGHT OUTER JOIN
+-- Modify this query to use RIGHT JOIN instead of LEFT JOIN
+SELECT countries.name AS country, languages.name AS language, percent
+FROM languages
+RIGHT JOIN countries
+USING(code)
+ORDER BY language;
+
+
+--FULL OUTER JOIN
+SELECT name AS country, code, region, basic_unit
+FROM countries
+-- Join to currencies
+FULL JOIN currencies
+USING (code)
+-- Where region is North America or name is null
+WHERE region = 'North America' OR region IS NULL
+ORDER BY region;
+
+
+SELECT 
+	c1.name AS country, 
+    region, 
+    l.name AS language,
+	basic_unit, 
+    frac_unit
+FROM countries as c1 
+-- Full join with languages (alias as l)
+FULL JOIN languages AS l
+USING(code)
+-- Full join with currencies (alias as c2)
+FULL JOIN currencies AS c2
+ON l.code = c2.code
+WHERE region LIKE 'M%esia';
+
+
+
+--INNER JOIN VS CROSS JOIN
+
+SELECT c.name AS country, l.name AS language
+-- Inner join countries as c with languages as l on code
+FROM countries AS c
+INNER JOIN languages AS l
+USING(code)
+WHERE c.code IN ('PAK','IND')
+	AND l.code in ('PAK','IND');
+
+SELECT c.name AS country, l.name AS language
+FROM countries AS c        
+-- Perform a cross join to languages (alias as l)
+CROSS JOIN languages AS l
+WHERE c.code in ('PAK','IND')
+	AND l.code in ('PAK','IND');
+
+
+SELECT 
+	c.name AS country,
+    region,
+    life_expectancy AS life_exp
+FROM countries AS c
+-- Join to populations (alias as p) using an appropriate join
+INNER JOIN populations AS p
+ON c.code = p.country_code
+-- Filter for only results in the year 2010
+WHERE year = 2010
+-- Sort by life_exp
+ORDER BY life_exp
+-- Limit to five records
+LIMIT 5;
+
+
+--SELF JOIN
+
+SELECT 
+	p1.country_code, 
+    p1.size AS size2010, 
+    p2.size AS size2015
+FROM populations AS p1
+INNER JOIN populations AS p2
+ON p1.country_code = p2.country_code
+WHERE p1.year = 2010
+-- Filter such that p1.year is always five years before p2.year
+AND p2.year = (p1.year + 5)
+
+
+
+-- SET THEORY
+-- UNION & UNION ALL
+
+-- Select all fields from economies2015
+SELECT * 
+FROM economies2015
+-- Set operation
+UNION
+-- Select all fields from economies2019
+SELECT *
+FROM economies2019
+ORDER BY code, year;
+
+
+-- Query that determines all pairs of code and year from economies and populations, without duplicates
+SELECT country_code, year
+FROM populations
+UNION
+SELECT code, year
+FROM economies
+ORDER BY country_code, year
+
+
+SELECT code, year
+FROM economies
+-- Set theory clause
+UNION ALL
+SELECT country_code, year
+FROM populations
+ORDER BY code, year;
+
+
+--intersect
+
+-- Return all cities with the same name as a country
+SELECT name AS city
+FROM cities
+INTERSECT
+SELECT name AS country
+FROM countries
+
+
+--EXCEPT
+
+-- Return all cities that do not have the same name as a country
+SELECT name
+FROM cities
+EXCEPT
+SELECT name
+FROM countries
+ORDER BY name;
+
+
+--SEMIJOINS & ANTIJOINS
+
+SELECT DISTINCT name
+FROM languages
+-- Add syntax to use bracketed subquery below as a filter
+WHERE code IN
+    (SELECT code
+    FROM countries
+    WHERE region = 'Middle East')
+ORDER BY name;
+
+
+
+SELECT code, name
+FROM countries
+WHERE continent = 'Oceania'
+-- Filter for countries not included in the bracketed subquery
+  AND code NOT IN
+    (SELECT code
+    FROM currencies);
+
+
+--SUBQUERIES
+
+SELECT *
+FROM populations
+WHERE year = 2015
+-- Filter for only those populations where life expectancy is 1.15 times higher than average
+  AND life_expectancy > 1.15*
+  (SELECT AVG(life_expectancy)
+   FROM populations
+   WHERE year = 2015);
+
+
+--Return the name, country_code and urbanarea_pop for all capital cities (not aliased).
+
+-- Select relevant fields from cities table
+SELECT name, country_code, urbanarea_pop
+FROM cities
+-- Filter using a subquery on the countries table
+WHERE name IN
+(SELECT capital
+FROM countries)
+ORDER BY urbanarea_pop DESC;
+
+--left join vs subqueries
+
+SELECT countries.name AS country,
+-- Subquery that provides the count of cities   
+  (SELECT COUNT(cities.name)
+   FROM cities
+   WHERE countries.code = cities.country_code) AS cities_num
+FROM countries
+ORDER BY cities_num DESC, country
+LIMIT 9;
+
+
+-- Find top nine countries with the most cities
+SELECT countries.name AS country, COUNT(cities.name) AS cities_num
+FROM countries
+LEFT JOIN cities
+ON countries.code = cities.country_code
+GROUP BY country
+-- Order by count of cities as cities_num
+ORDER BY cities_num DESC, country 
+-- Limit the results
+limit 9
+
+
+--SUBQUERY INSIDE FROM
+
+-- Select local_name and lang_num from appropriate tables
+SELECT countries.local_name, sub.lang_num
+FROM countries,
+  (SELECT code, COUNT(*) AS lang_num
+  FROM languages
+  GROUP BY code) AS sub
+-- Where codes match
+WHERE countries.code = sub.code
+ORDER BY lang_num DESC;
+
+
+
+
+--elect country code, inflation_rate, and unemployment_rate from economies.
+Filter code for the set of countries which contain the words "Republic" or "Monarchy" in their gov_form.
+
+-- Select relevant fields
+SELECT  code, inflation_rate, unemployment_rate
+FROM economies
+WHERE year = 2015 
+  AND code IN
+-- Subquery returning country codes filtered on gov_form
+	(SELECT code
+  FROM countries
+  WHERE gov_form LIKE '%Republic%' OR gov_form LIKE '%Monarchy%')
+ORDER BY inflation_rate;
+
+
+
+-- Select fields from cities
+SELECT 
+	name, 
+    country_code, 
+    city_proper_pop, 
+    metroarea_pop,
+    city_proper_pop / metroarea_pop * 100 AS city_perc
+FROM cities
+-- Use subquery to filter city name
+WHERE name IN
+  (SELECT capital
+   FROM countries
+   WHERE (continent = 'Europe'
+   OR continent LIKE '%America'))
+-- Add filter condition such that metroarea_pop does not have null values
+	  AND metroarea_pop IS NOT NULL
+-- Sort and limit the result
+ORDER BY city_perc DESC
+LIMIT 10;
+
+--DATA MANIOULATION IN SQL
+-- CASE STATEMENTS
+
+-- Identify the home team as Bayern Munich, Schalke 04, or neither
+SELECT 
+	CASE WHEN hometeam_id = 10189 THEN 'FC Schalke 04'
+        WHEN hometeam_id = 9823 THEN 'FC Bayern Munich'
+         ELSE 'Other' END AS home_team,
+	COUNT(id) AS total_matches
+FROM matches_germany
+-- Group by the CASE statement alias
+GROUP BY home_team;
+
+
+SELECT 
+	m.date,
+	t.team_long_name AS opponent,
+    -- Complete the CASE statement with an alias
+	CASE WHEN m.home_goal > m.away_goal THEN 'Barcelona win!'
+        WHEN m.home_goal <  m.away_goal THEN 'Barcelona loss :(' 
+        ELSE 'Tie' END AS outcome 
+FROM matches_spain AS m
+LEFT JOIN teams_spain AS t 
+ON m.awayteam_id = t.team_api_id
+-- Filter for Barcelona as the home team
+WHERE m.hometeam_id = 8634; 
