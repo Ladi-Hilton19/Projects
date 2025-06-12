@@ -1,6 +1,5 @@
 /********************************************************************************/
 /*	Author: OLADIPUPO S. HILTON									Date: 23/5/2022	*/
-/*	email: p2686917@my365.dmu.ac.uk				     		Course: IMAT5168    */
 /*																				*/
 /*             										                 		   	*/
 /*              Analysis of Guided Learning Hours in Sixth Form   		        */                                                                   
