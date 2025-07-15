@@ -87,13 +87,15 @@ New features were created to aid analysis:
 
 # <img width="471" height="260" alt="Picture 1" src="https://github.com/user-attachments/assets/0832e739-f63c-43cc-a17e-3d556f78b559" />
 
-# <img width="104" height="120" alt="Picture 11" src="https://github.com/user-attachments/assets/af05687d-a5ec-4288-8489-e4f9950ec844" />
+<img width="104" height="120" alt="Picture 11" src="https://github.com/user-attachments/assets/af05687d-a5ec-4288-8489-e4f9950ec844" />
 
 
 ### Monthly Trends
 
 * **October and November** have the **highest accident counts**.
 * **April, February, and December** are the **safest months** based on accident records.
+
+https://github.com/Ladi-Hilton19/Projects/blob/main/Python%20Analysis%20of%20UK%20Road%20Dataset/Analysis%20Report.md#-6
 
 ### Day of Week Trends
 
@@ -105,7 +107,10 @@ New features were created to aid analysis:
   * **Sunday** always has the fewest accidents.
   * **Friday** dominates in most years (except 2014, 2015, 2019).
   * **Wednesday/Tuesday** alternate in high/low positions.
+ 
+# <img width="616" height="300" alt="Picture 2" src="https://github.com/user-attachments/assets/b718fa08-53ac-410b-ac78-b51e5368811a" />
 
+# <img width="628" height="362" alt="Picture 3" src="https://github.com/user-attachments/assets/8849343c-f103-4e54-9ee4-0f3ba7b9cda9" />
 
 ## Analysis by Local Authority Districts
 
@@ -203,8 +208,8 @@ Visualizations
 
 # <img width="424" height="292" alt="Picture 4" src="https://github.com/user-attachments/assets/661a8940-ca15-43da-abf3-7ed68398d30b" />
 
-# <img width="628" height="362" alt="Picture 3" src="https://github.com/user-attachments/assets/8849343c-f103-4e54-9ee4-0f3ba7b9cda9" />
 
-# <img width="616" height="300" alt="Picture 2" src="https://github.com/user-attachments/assets/b718fa08-53ac-410b-ac78-b51e5368811a" />
+
+
 
 
