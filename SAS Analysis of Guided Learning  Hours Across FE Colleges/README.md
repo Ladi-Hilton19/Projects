@@ -145,11 +145,10 @@ Utilized:
 # <img width="244" height="318" alt="SAS 9" src="https://github.com/user-attachments/assets/95537de7-377f-4b1b-9011-14f0bea6f3e2" />
 
 
-# <img width="2<img width="604" height="452" alt="SAS 11" src="https://github.com/user-attachments/assets/af5d5229-0438-412b-9a66-7e28839d9e2d" />
+# <img width="604" height="452" alt="SAS 11" src="https://github.com/user-attachments/assets/af5d5229-0438-412b-9a66-7e28839d9e2d" />
 
 
 # <img width="288" height="264" alt="SAS 7" src="https://github.com/user-attachments/assets/8d5051ac-bf2e-4713-8acc-c04d5de5798e" />
-
 
 # <img width="272" height="256" alt="SAS 6" src="https://github.com/user-attachments/assets/3f558dfe-457c-4e32-bb8f-915a7dbdc5d2" />
 
