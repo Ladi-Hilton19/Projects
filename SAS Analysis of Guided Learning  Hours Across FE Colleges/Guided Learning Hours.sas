@@ -1,5 +1,5 @@
 /********************************************************************************/
-/*	Author: OLADIPUPO S. HILTON									Date: 23/5/2022	*/
+/*	Author: OLADIPUPO S. HILTON									            	*/
 /*																				*/
 /*             										                 		   	*/
 /*              Analysis of Guided Learning Hours in Sixth Form   		        */                                                                   
