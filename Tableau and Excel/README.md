@@ -1,3 +1,9 @@
+# A summary of my discovery from the NHS Scotland Cancer Waiting Times Data
+
+You can view my project on Tableau Public 
+
+[Cancer Waiting Times Dashboard](https://public.tableau.com/app/profile/oladipupo.samuel.hilton/viz/CancerWaitingTimeinNHSScotland/CancerWaitingTimeinNHSScotland)
+
  <img width="604" height="312" alt="BI _1" src="https://github.com/user-attachments/assets/71f55409-29b2-4ed9-9f53-b6d68175880e" />
 
 ## Importing the files into Tableau prep
