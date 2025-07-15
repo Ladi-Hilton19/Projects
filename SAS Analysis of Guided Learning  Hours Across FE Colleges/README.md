@@ -12,7 +12,6 @@ Key findings include:
 - The **region** of an institution significantly influences GLH.
 - The **size** of the college (based on total GLH) showed **no significant impact** on GLH per learner.
 
----
 
 ## 🔧 Methods
 
@@ -55,7 +54,6 @@ Final cleaned dataset: **337 observations**
 - Final skewness: **< ±0.1** (Acceptable)
 - Dropped original variables and retained transformed ones for modeling.
 
----
 
 ## 📊 Statistical Modeling
 
@@ -65,7 +63,6 @@ Utilized:
 - `PROC TTEST` – compare **means across college types**.
 - `PROC ANOVA` – assess variation across **years, size, and region**.
 
----
 
 ## 📌 Analysis & Discussion
 
@@ -113,7 +110,6 @@ Utilized:
 - Year 3 interaction: **not significant** (p = 0.0803).
 - Greater London, East of England, and North West consistently exhibited higher GLH.
 
----
 
 ## ✅ Conclusion
 
@@ -122,7 +118,6 @@ Utilized:
 - **Size** and **Year** showed limited or no significant impact.
 - Educational planning should consider **regional disparities and college type** to optimize learning hours.
 
----
 
 ## 📚 References
 
@@ -130,14 +125,3 @@ Utilized:
 2. Kim, T.K. (2015). *T-test as a parametric statistic*. Korean Journal of Anesthesiology, 68(6), 540.
 3. Wilson, A.E. & Ross, M. (2000). *The frequency of temporal-self and social comparisons*. Journal of Personality and Social Psychology, 78(5), 928.
 
----
-
-## 🗂️ Appendix
-
-### 📈 T-test Showing Effect of College Type on GLH per Learner (All Years)
-
-![T-test Analysis](SAS%206.png)
-
-### 📊 Colleges with Lowest Amount of GLH per Learner
-
-![Lowest GLH Table](SAS%2010.png)
