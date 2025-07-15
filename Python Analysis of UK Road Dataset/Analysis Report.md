@@ -67,7 +67,6 @@ New features were created to aid analysis:
 
 * A custom counter was defined to check for null values across all columns in both datasets.
 
----
 
 ## Data Analysis
 
@@ -100,7 +99,6 @@ New features were created to aid analysis:
   * **Friday** dominates in most years (except 2014, 2015, 2019).
   * **Wednesday/Tuesday** alternate in high/low positions.
 
----
 
 ## Analysis by Local Authority Districts
 
@@ -125,8 +123,6 @@ New features were created to aid analysis:
   * **Melton Mowbray (Melton)**
   * **Market Harborough & Lutterworth (Harborough)**
 
----
-
 ## Further Analysis of Casualties
 
 ### Casualty Types and Class
@@ -147,8 +143,6 @@ New features were created to aid analysis:
   * **26–35** age group: **19%**
   * Followed by 36–45 (15%), 21–25 (14%), 16–20 (13%), and 46–55 (13%)
 * Correlates with NHS population data showing a younger demographic in Leicestershire.
-
----
 
 ## Environmental and Road Factors
 
@@ -177,17 +171,13 @@ New features were created to aid analysis:
 * **Rainy** and **other adverse conditions** make up the remainder.
 * Most accidents in fine weather are also of **slight severity**.
 
----
-
 ## Conclusion
 
 This analysis provides insight into road accident trends and casualty patterns across Leicestershire from 2010 to 2020. While there is a visible decline in accidents and casualties, key contributing factors such as **day of week, road type, weather**, and **vehicle type** remain consistent influencers. Understanding these patterns helps inform **policy, planning, and road safety interventions**.
 
 For detailed code implementations and visualizations, refer to the **Appendix** or accompanying **Jupyter Notebooks**.
 
----
 
 **Data Source:** [UK Road Safety Data](https://data.gov.uk/dataset/road-accidents-safety-data)
 **License:** [Open Government Licence v3.0](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
----
