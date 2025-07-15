@@ -76,12 +76,19 @@ New features were created to aid analysis:
 * **2014** marked a slight increase in both, standing out from the overall downward trend.
 * Significant reduction from **2017 to 2020**, possibly due to improved safety measures and **COVID-19 lockdowns**.
 
+# <img width="184" height="240" alt="Picture 12" src="https://github.com/user-attachments/assets/cc55f1dd-9227-41ad-b12c-3253290d3b8c" />
+
 ### Quarterly Trends
 
 * **Quarter 4** records the **highest number** of accidents and casualties consistently.
 * **Quarter 1** has the **lowest counts**.
 * **Quarter 2 of 2020** shows a sharp drop due to pandemic restrictions.
 * **2014 Q1** also shows unusually high accident figures.
+
+# <img width="471" height="260" alt="Picture 1" src="https://github.com/user-attachments/assets/0832e739-f63c-43cc-a17e-3d556f78b559" />
+
+# <img width="104" height="120" alt="Picture 11" src="https://github.com/user-attachments/assets/af05687d-a5ec-4288-8489-e4f9950ec844" />
+
 
 ### Monthly Trends
 
@@ -180,4 +187,24 @@ For detailed code implementations and visualizations, refer to the **Appendix** 
 
 **Data Source:** [UK Road Safety Data](https://data.gov.uk/dataset/road-accidents-safety-data)
 **License:** [Open Government Licence v3.0](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+
+
+Visualizations
+
+# <img width="235" height="182" alt="Picture 10" src="https://github.com/user-attachments/assets/bc6fa6cd-a46c-419f-a638-fdd41927d822" />
+
+# <img width="214" height="207" alt="Picture 9" src="https://github.com/user-attachments/assets/4feb1f6a-6605-4e54-9475-e6a6efe3e043" />
+
+# <img width="483" height="259" alt="Picture 8map" src="https://github.com/user-attachments/assets/2624ce6b-8c79-4aff-8b26-bcecca414d08" />
+
+# <img width="596" height="288" alt="Picture 6" src="https://github.com/user-attachments/assets/a4f7c083-ffcd-4c4f-997b-c83476171481" />
+
+# <img width="420" height="284" alt="Picture 5" src="https://github.com/user-attachments/assets/1a9c9c14-80a1-487c-98c8-70d0e099dfc1" />
+
+# <img width="424" height="292" alt="Picture 4" src="https://github.com/user-attachments/assets/661a8940-ca15-43da-abf3-7ed68398d30b" />
+
+# <img width="628" height="362" alt="Picture 3" src="https://github.com/user-attachments/assets/8849343c-f103-4e54-9ee4-0f3ba7b9cda9" />
+
+# <img width="616" height="300" alt="Picture 2" src="https://github.com/user-attachments/assets/b718fa08-53ac-410b-ac78-b51e5368811a" />
+
 
